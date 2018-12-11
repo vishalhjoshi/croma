@@ -69,7 +69,7 @@
                                 </p>
                             </div>
                             <div class="col-md-8">
-                                <p class="text-left"><strong>Rajendra Singhal</strong></p>
+                                <p class="text-left"><strong>{{current_session.registration_id.user_id.first_name}} {{current_session.registration_id.user_id.last_name}}</strong></p>
                                 <p class="text-left"><strong>{{current_session.code}}</strong></p>
                                 <p class="text-left"><strong>From: {{current_session.from_dt | date:"d-M-Y" }}<br> To: {{current_session.to_dt  | date:"d-M-Y"}}</strong></p>
                             </div>
