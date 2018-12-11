@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_extra %}
+<title>Item Master | Croma</title>
+{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{% static '/css/item_master.css' %}" />
+{% if is_retrieve %}
+<style>
+.edit_row, .del_row{
+	pointer-events: none;
+	cursor: default;
+}
+</style>
+{% endif %}
+{% endblock %}
+{% block content %}
+{% include "home/navbar.html" %}
+{% include "item_master/item_form.html" %}
+	<center>
+		<div style="width: 100%; height: 25px; font-size: 15px; margin-bottom: 10px;">
+			{% if not is_retrieve %}
+				Press F9 to add Batches
+			{% endif %}
+		</div>
+	</center>
+	<div class = "container-fluid" style="margin-top:10px;">
+		<table id = "item_batch_table" class="table table-hover table-bordered" >
+		  <thead class="thead-inverse" id = "item_batch_table_head">
+		    <tr>
+				<th>Batch</th>
+				<th >Expiry</th>
+				<th>Strip</th>
+				<th>Nos</th>
+				<th>Strip Pur</th>
+				<th>Strip Sale</th>
+				<th>MRP</th>
+				<th>Pur Rate</th>
+				<th>Sale Rate</th>
+				<th>Inst Rate</th>
+				<th>Trade Rate</th>
+				<th>Buttons</th>
+		    </tr>
+		  </thead>
+		  <tbody id = "item_batch_table_body">
+		  </tbody>
+		</table>
+	</div>
+{% include "item_master/batch_form.html" %}
+{% include "item_master/search.html" %}
+{% include "main_buttons.html" %}
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/item_master.js' %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		AutoCompleteData("/item/api/list/?format=json", "itemData", "#id_name", 30, 1)
+	})
+</script>
+{% include "item_master/item_master.html" %}
+{% endblock %}
