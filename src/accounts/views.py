@@ -45,15 +45,16 @@ def login_view(request):
 def register_view(request):
 	User = get_user_model()
 	user_qs = User.objects.all()
-	if user_qs.count() > 0:
-		messages.warning(request, 'User has already registred')
-		return HttpResponseRedirect("/account/login")
+	# if user_qs.count() > 0:
+	# 	messages.warning(request, 'User has already registred')
+	# 	return HttpResponseRedirect("/account/login")
 
 	form = UserRegisterForm(request.POST or None)
 	if form.is_valid():
 		user = form.save()
 		password = form.cleaned_data.get("password")	
 		user.set_password(password)
+		user.is_staff = True
 		user.save()
 		new_user = authenticate(username = user.username, password = password)
 		login(request, new_user)
