@@ -1,6 +1,6 @@
 
 
-class getFormMixin(object):
+class CreateFormsMixin(object):
     model = None
     lookup = None
     formClass = None
