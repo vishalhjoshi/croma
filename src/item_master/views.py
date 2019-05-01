@@ -361,3 +361,5 @@ def search_item_info(request):
 			response = {"status" : "0"}
 			logger.error(str(e))
 			return JsonResponse(response, status = 400)
+
+

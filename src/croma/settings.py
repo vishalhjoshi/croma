@@ -113,24 +113,24 @@ WSGI_APPLICATION = 'croma.wsgi.application'
 #     }
 # }
 # except:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'croma',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'PORT': '5432',
-#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'croma',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'PORT': '5432',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [

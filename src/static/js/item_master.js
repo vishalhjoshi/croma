@@ -424,6 +424,75 @@ $(document).ready(function(){
     })
 })
 
+function fillViewCompanyModal(response){
+    let company_tbody = "";
+    let supplier_tbody = "";
+
+    $.each(response, function(key, value){
+        if(key == "supplier"){
+            $.each(response[key], function(key, value){
+                if(value != null){
+                    supplier_tbody += `<tr>
+                    <td scope="row">${key}</td>
+                    <td scope="row">${value}</td>
+                </tr>`
+                }
+            });
+        }
+        else{
+            if(value != null){
+                company_tbody += `<tr>
+                <td scope="row">${key}</td>
+                <td scope="row">${value}</td>
+            </tr>`
+            }
+        }
+
+    })
+    content = `<div>\
+    <table class="table table-bordered table-light 
+        table-stripped table-hover table-sm table-responsive">
+        <thead>
+        </thead>
+        <tbody>
+        ${company_tbody}
+        </tbody>
+    </table>
+    <h3 class = "text-bold">Supplier Info</h3>
+    <table class="table table-bordered table-light 
+        table-stripped table-hover table-sm table-responsive">
+        <thead>
+        </thead>
+        <tbody>
+        ${supplier_tbody}
+        </tbody>
+    </table>
+
+    </div>`
+    $("#comapny_infoModal .modal-body").html(content);
+
+}
+
+$("#view_company").click(function(){
+    company_name = $("#id_group_id").val();
+    if(company_name == ""){
+        alert("No Company Name Provided");
+        return false;
+    }
+    $("#comapny_infoModal .modal-title").text(company_name + " | INFO");
+    var data = {"csrfmiddlewaretoken" : csrftoken,"company_name":company_name};
+    $.ajax({
+        type : 'GET',
+        url :  '/company/ajax/get_company_info',
+        data : data,
+        success : function(response){
+            fillViewCompanyModal(response);
+        },
+        error: function(response) {
+          alert("Error in resolving Company");
+        }
+    });
+})
 
 $("#edit_company").click(function(){
     company_name = $("#id_group_id").val();

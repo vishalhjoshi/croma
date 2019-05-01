@@ -35,11 +35,9 @@ class InvoiceStatementCreate(View):
 
 	def get(self, request):
 		session_id = request.session['session']
-
 		current_url = resolve(request.path_info).url_name
 		if current_url == "SalesInvSt":		title = "Sales Invoice Statement"
 		elif current_url == "PurInvSt":		title = "Purchase Invoice Statement"
-
 		InvStForm = self.form_class(request.POST or None, session_id = session_id)
 		context = {
 			"form" : InvStForm,
@@ -50,11 +48,9 @@ class InvoiceStatementCreate(View):
 	def post(self, request):
 		session_id = request.session['session']
 		form = self.form_class(request.POST, session_id = session_id)
-
 		if form.is_valid():
 			to_dt = form.cleaned_data['to_dt']
 			from_dt = form.cleaned_data['from_dt']
-
 			current_url = resolve(request.path_info).url_name
 			if current_url == "SalesInvSt":		url = "sales"
 			elif current_url == "PurInvSt":		url = "purchase"
@@ -263,7 +259,6 @@ def DateWiseSaleInvoiceReportDetail(request, from_dt, to_dt):
 	end_date = datetime.strptime(to_dt, '%Y-%m-%d')
 	current_url = resolve(request.path_info).url_name
 	if current_url == "MonhlyInvSale_det":
-
 		query = SalesInvHrd.objects.filter(session_id =  current_session, \
 					doc_dt__gte = start_date, doc_dt__lte = end_date).annotate(month = TruncMonth('doc_dt')).\
 					values('month').annotate(amt = Sum('net_amount')).values('month', 'amt').order_by('month')
@@ -778,7 +773,6 @@ class SupplierWiseReport(View):
 	def post(self, request):
 		session_id = request.session['session']
 		form = self.form_class(request.POST, session_id = session_id)
-
 		if form.is_valid():
 			to_dt = form.cleaned_data['to_dt']
 			from_dt = form.cleaned_data['from_dt']

@@ -9,6 +9,10 @@ from django.contrib.auth import (
 	)
 from .forms import UserLoginForm, UserRegisterForm, CompanyRegistrationForm
 from .models import Registration, YearEnding
+from salt_master.models import Salt
+from unit_master.models import Unit
+from company_master.models import Company, Supplier
+from godown_master.models import Godown
 import datetime
 
 
@@ -75,6 +79,20 @@ def logout_view(request):
 	return HttpResponseRedirect("/")
 
 
+def initializeRegistration(company_instance,  today_date, end_date):
+	YearEnding.objects.create(code = "DB1",
+						year_pur_id=0, year_sale_id=0,
+													from_dt=today_date, to_dt=end_date, 
+						registration_id=company_instance)
+	# Godown.objects.create(name = "GODOWN")
+	# Supplier.objects.create(name = "SELF")
+	# Company.objects.create(name = "AVENTIS PASTEUR")
+	# Unit.objects.create(name = "1*10", unit = 10)
+	# Salt.objects.create(name = "TELMISARTAN")
+
+
+
+
 def companyRegistrationView(request):
 	reg_qs = Registration.objects.all()
 	if reg_qs.count() > 0:
@@ -93,10 +111,10 @@ def companyRegistrationView(request):
 		company_instance = form.save()
 		today_date = datetime.date.today()
 		end_date = today_date + datetime.timedelta(days=365)
-		YearEnding.objects.create(code = "DB1",
-							year_pur_id=0, year_sale_id=0,
-                            from_dt=today_date, to_dt=end_date, 
-							registration_id=company_instance)
+
+		initializeRegistration(company_instance, today_date, end_date)
+
+
 		
 		messages.warning(request, 'Login')
 		return redirect("/account/login")

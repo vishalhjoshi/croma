@@ -13,4 +13,6 @@ urlpatterns = [
 	#AJAX
 	url(r'^ajax/get_company_id$', get_company_id, name = "get_company_id"),
 	url(r'^ajax/get_supplier_id$', get_supplier_id, name = "get_supplier_id"),
+	url(r'^ajax/get_company_info$', get_company_info, name = "get_company_info"),
+
 ]

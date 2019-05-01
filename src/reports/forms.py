@@ -6,8 +6,6 @@ from company_master.models import Supplier
 from django.contrib.admin.widgets import AdminDateWidget
 
 class InvoiceStatementForm(forms.Form):
-	# from_dt = forms.DateField(widget=forms.SelectDateWidget(years=Year_Choices) )
-	# to_dt = forms.DateField(widget=forms.SelectDateWidget(years=Year_Choices))
 	from_dt = forms.DateField(widget = AdminDateWidget)
 	to_dt = forms.DateField(widget = AdminDateWidget)
 	
@@ -18,16 +16,6 @@ class InvoiceStatementForm(forms.Form):
 		to_dt = obj.to_dt
 		self.Year_Choices = [from_dt.year, to_dt.year]
 		super(InvoiceStatementForm, self).__init__(*args, **kwargs)
-
-		# self.fields['from_dt'] = forms.DateField(
-		#     widget=forms.SelectDateWidget(years=self.Year_Choices)
-		# )
-		# self.fields['to_dt'] = forms.DateField(
-		#     widget=forms.SelectDateWidget(years=self.Year_Choices)
-		# )
-
-	Year_Choices = None
-
 
 
 class ItemWiseReportForm(forms.Form):
@@ -73,5 +61,7 @@ class ExpiryReport(forms.Form):
 	exp_upto_mon = forms.BooleanField()
 	exp_of_mon = forms.BooleanField()
 
+
 class InventoryReport(forms.Form):
 	name = forms.CharField()
+

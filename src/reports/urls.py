@@ -17,7 +17,7 @@ from .views import (
 		InventoryReportDetail,
 		SupplierWiseReport,
 		SupplierWiseReportDetail,
-		export_supplier_wise_report
+		export_supplier_wise_report,
 	)
 
 

@@ -3,6 +3,7 @@ try:
 except:
 	from urlparse import urlparse
 from django.shortcuts import render, get_object_or_404, redirect, Http404
+from django.core import serializers
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from .models import Company, Chain, Supplier
@@ -95,3 +96,30 @@ def get_supplier_id(request):
 		}
 		return HttpResponse(json.dumps(data), content_type='application/json')
 	return HttpResponse("/")
+
+
+def get_company_info(request):
+	if request.method == "GET" and request.is_ajax():
+		company = request.GET.get("company_name")
+		instance = Company.objects.get(name = company)
+		context = {
+			"name": company,
+			"add1": instance.add1,
+			"add2": instance.add2,
+			"city": instance.city,
+			"supplier": {
+				"name": instance.supp_id.name,
+				"add1": instance.supp_id.add1,
+				"add2": instance.supp_id.add2,
+				"city": instance.supp_id.city,
+				"drug_license1": instance.supp_id.drug_license1,
+				"drug_license2": instance.supp_id.drug_license2,
+				"tin_no": instance.supp_id.tin_no,
+				"gst_no": instance.supp_id.gst_no,
+				"pin_no": instance.supp_id.pin_no,
+				"lst_num": instance.supp_id.lst_num,
+				"cst_num": instance.supp_id.cst_num,
+			}
+		}
+		return JsonResponse(context, status = 200)
+	return JsonResponse({}, status = 400)
