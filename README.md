@@ -10,7 +10,7 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/jai-singhal/croma/)
 
 # Demo Video
-[Demo Video](https://www.youtube.com/watch?v=x-Z_nmR70xk)(https://www.youtube.com/watch?v=x-Z_nmR70xk)
+[Demo Video](https://www.youtube.com/watch?v=x-Z_nmR70xk)
 
 # Introduction
 
