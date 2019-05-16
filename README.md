@@ -9,8 +9,8 @@
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/jai-singhal/croma/blob/master/LICENSE)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/jai-singhal/croma/)
 
-
-[![Demo](https://img.youtube.com/vi/x-Z_nmR70xk/1.jpg)](https://www.youtube.com/watch?v=x-Z_nmR70xk)
+# Demo Video
+[Demo Video](https://www.youtube.com/watch?v=x-Z_nmR70xk)(https://www.youtube.com/watch?v=x-Z_nmR70xk)
 
 # Introduction
 
