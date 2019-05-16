@@ -42,8 +42,8 @@ table thead, table tbody tr {
 
 {% block content %}
 {% include "home/navbar.html" %}
-<div class = "container">
-	<div class = "col-md-10 col-md-offset-2">
+<div class = "container text-center">
+	{% comment %} <div class = "col-md-10 col-md-offset-2">
 		<h1 style="font-weight: bold;">{{current_session.registration_id.company_name}}</h1><br>
 			<h4 style="margin-left: 7%;">
                 {{current_session.registration_id.address1}}
@@ -62,7 +62,17 @@ table thead, table tbody tr {
 					<h4>Conatct No.: {{current_session.registration_id.phone1}}</h4>
 				</div>
 			</div><br >
-			<img style = "margin-left:20%; " src = "{% static '/images/Ganesh_laxmi.jpg' %}">
+			<img style = "margin-left:20%; " src = "{% static '/images/Ganesh_laxmi.jpg' %}"> {% endcomment %}
+
+		<h1  style="font-weight: bold;">FOO BAR COMPANY</h1><br>
+			<h4 style="margin-left: 7%;">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </h4><br>
+
+			<img  src = "{% static '/images/Ganesh_laxmi.jpg' %}">
+
+
+
 	</div>
 </div>
 

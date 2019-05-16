@@ -69,10 +69,10 @@ $(document).unbind("keyup").keyup(function(e){
         $("#editor-modal").modal("toggle");
         $("#editor").trigger("reset");
         $createMode = true;
- $("#batch_no").attr("readonly", false);
-         $('#batch_no').focus();
-        
-         $createMode = true;
+        $("#batch_no").attr("readonly", false);
+        $('#editor-modal').on('shown.bs.modal', function () {
+            $("#batch_no").focus();
+        });
     }
 });
 {% else %}

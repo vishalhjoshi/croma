@@ -131,3 +131,5 @@ ENV/
 
 *.jar
 
+print_inv.txt
+

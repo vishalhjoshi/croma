@@ -202,3 +202,8 @@ $("#expiry").focus(function () {
 function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
 }
+
+
+$(document).ready(function(){
+    $('input:text:visible:first').focus();
+})
